@@ -1,0 +1,119 @@
+<!-- Panel filtro flotante -->
+<div class="filters-container-floating" *ngIf="showFilters">
+  <button class="close-filters-btn" (click)="toggleFilters()" aria-label="Cerrar filtros">&times;</button>
+
+  <input
+    type="text"
+    placeholder="Buscar por username"
+    [(ngModel)]="filterUsername"
+    (input)="applyFilters()"
+  />
+
+  <input
+    type="number"
+    placeholder="Seguidores mínimos"
+    [(ngModel)]="filterFollowersMin"
+    (input)="applyFilters()"
+    min="0"
+  />
+
+  <input
+    type="number"
+    placeholder="Seguidores máximos"
+    [(ngModel)]="filterFollowersMax"
+    (input)="applyFilters()"
+    min="0"
+  />
+
+  <button class="clear-filters-btn" (click)="clearFilters()" type="button">
+    Eliminar filtros
+  </button>
+</div>
+
+<div class="product-list-container">
+  <div class="header">
+    <h2 class="section-title">Perfiles de Instagram</h2>
+
+    <button
+      [ngClass]="showInactives ? 'toggle-btn toggle-red' : 'toggle-btn toggle-green'"
+      (click)="toggleList()"
+      type="button"
+    >
+      {{ showInactives ? 'Ver Activos' : 'Ver Inactivos' }}
+    </button>
+  </div>
+
+  <div class="actions">
+    <button class="add-btn" [routerLink]="['/admin/instagram-form']" type="button">
+      Agregar
+    </button>
+    <button class="filter-btn" type="button" (click)="toggleFilters()">
+      Filtrar
+    </button>
+  </div>
+
+  <div class="table-wrapper">
+    <table id="instagramTable" class="display nowrap">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>USERNAME</th>
+          <th>NOMBRE COMPLETO</th>
+          <th>BIO</th>
+          <th>SEGUIDORES</th>
+          <th>SIGUIENDO</th>
+          <th>POSTS</th>
+          <th>FECHA CREACIÓN</th>
+          <th>ACCIONES</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let profile of filteredProfiles">
+          <td>{{ profile.id || '-' }}</td>
+          <td>{{ '@' + profile.username }}</td>
+          <td>{{ profile.fullName || '-' }}</td>
+          <td>{{ profile.bio || '-' }}</td>
+          <td>{{ profile.followers || 0 | number }}</td>
+          <td>{{ profile.following || 0 | number }}</td>
+          <td>{{ profile.posts || 0 }}</td>
+          <td>{{ formatDate(profile.creationDate) }}</td>
+
+          <td class="action-buttons">
+            <ng-container *ngIf="!showInactives">
+              <button
+                mat-icon-button
+                color="accent"
+                matTooltip="Editar"
+                [routerLink]="['/admin/instagram-form', profile.id]"
+                type="button"
+              >
+                <mat-icon>edit</mat-icon>
+              </button>
+              <button
+                mat-icon-button
+                color="warn"
+                matTooltip="Eliminar"
+                (click)="deleteProfile(profile.id)"
+                type="button"
+              >
+                <mat-icon>delete_forever</mat-icon>
+              </button>
+            </ng-container>
+
+            <ng-container *ngIf="showInactives">
+              <button
+                mat-icon-button
+                color="primary"
+                (click)="restoreProfile(profile.id)"
+                matTooltip="Restaurar"
+                type="button"
+              >
+                <mat-icon>restore</mat-icon>
+              </button>
+            </ng-container>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

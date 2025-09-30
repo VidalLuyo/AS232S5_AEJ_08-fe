@@ -1,0 +1,347 @@
+/* Sidebar Container */
+.sidebar-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 65px;
+  background: linear-gradient(180deg, #0a1929 0%, #1a2035 100%);
+  color: #e0e0e0;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow-x: hidden;
+  overflow-y: auto;
+  z-index: 1000;
+  box-shadow: 4px 0 8px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.sidebar-container.expanded {
+  width: 260px;
+}
+
+/* Overlay para responsivo */
+.sidebar-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+/* Mostrar overlay en responsivo cuando el sidebar está expandido */
+@media (max-width: 768px) {
+  .sidebar-container {
+      width: 65px;
+  }
+
+  .sidebar-container.expanded {
+      width: 260px;
+  }
+
+  .sidebar-overlay {
+      display: block;
+  }
+}
+
+/* Header Styles */
+.sidebar-header {
+  height: 64px;
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(0, 0, 0, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  flex-shrink: 0; /* Evita que el header se comprima */
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo {
+  height: 32px;
+  width: auto;
+  filter: brightness(0.9);
+}
+
+.logo-text {
+  font-size: 16px; /* Reducido de 18px */
+  font-weight: 500;
+  letter-spacing: 0.3px; /* Reducido */
+  color: #e0e0e0;
+  line-height: 1.2;
+}
+
+.toggle-button mat-icon {
+  font-size: 24px;
+  color: white;
+}
+
+.toggle-button {
+  color: #e0e0e0;
+  background-color: transparent;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  transition: all 0.3s ease;
+}
+
+.toggle-button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Menu Styles */
+.menu-container {
+  flex: 1; /* Toma todo el espacio disponible */
+  padding: 16px 0;
+  overflow-y: auto;
+  padding-bottom: 80px; /* Espacio para el footer */
+}
+
+.menu-group {
+  margin-bottom: 20px; /* Reducido de 24px */
+}
+
+.group-label {
+  padding: 0 24px;
+  margin-bottom: 8px;
+  font-size: 11px; /* Reducido de 12px */
+  font-weight: 500;
+  color: #607d8b;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.menu-items {
+  display: flex;
+  flex-direction: column;
+  gap: 2px; /* Reducido de 4px */
+}
+
+.menu-item {
+  position: relative;
+  height: 44px; /* Reducido de 48px */
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  text-decoration: none;
+  color: #b0bec5;
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.item-content {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  z-index: 1;
+}
+
+.hover-indicator {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 0;
+  background: rgba(255, 255, 255, 0.03);
+  transition: width 0.3s ease;
+}
+
+.menu-item:hover {
+  color: #fff;
+}
+
+.menu-item:hover .hover-indicator {
+  width: 100%;
+}
+
+.menu-item.active {
+  background: rgba(30, 136, 229, 0.15);
+  color: #90caf9;
+}
+
+.menu-item.active::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 4px;
+  background: #1e88e5;
+  box-shadow: 0 0 10px rgba(30, 136, 229, 0.5);
+}
+
+.menu-item mat-icon {
+  color: inherit;
+}
+
+.item-label {
+  font-size: 15px; /* Reducido de 16px */
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+/* Footer Styles - Mejorado */
+.sidebar-footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 12px 16px; /* Ajustado el padding */
+  background: rgba(0, 0, 0, 0.4); /* Más opaco */
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  min-height: 70px; /* Altura mínima definida */
+  flex-shrink: 0; /* Evita que se comprima */
+}
+
+.user-profile {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1; /* Toma el espacio disponible */
+}
+
+.avatar-container {
+  position: relative;
+  flex-shrink: 0; /* No se comprime */
+}
+
+.avatar {
+  width: 32px; /* Reducido de 36px */
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.status-indicator {
+  position: absolute;
+  bottom: -2px;
+  right: -2px;
+  width: 10px; /* Reducido de 12px */
+  height: 10px;
+  border-radius: 50%;
+  background: #4caf50;
+  border: 2px solid #0a1929;
+  box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.2);
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px; /* Espacio entre nombre y rol */
+  flex: 1;
+  min-width: 0; /* Permite que el texto se trunque si es necesario */
+}
+
+.user-name {
+  font-size: 13px; /* Reducido de 14px */
+  font-weight: 500;
+  color: #e0e0e0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.user-role {
+  font-size: 11px; /* Reducido de 12px */
+  color: #78909c;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.settings-button {
+  background-color: transparent !important;
+  border: none !important;
+  color: #e0e0e0 !important;
+  border-radius: 50% !important;
+  width: 28px !important; /* Más pequeño */
+  height: 28px !important;
+  min-width: 28px !important; /* Forzar tamaño mínimo */
+  padding: 0 !important; /* Sin padding */
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  transition: all 0.3s ease !important;
+  flex-shrink: 0 !important;
+  box-shadow: none !important; /* Sin sombra */
+}
+
+.settings-button mat-icon {
+  font-size: 16px !important; /* Más pequeño */
+  width: 16px !important;
+  height: 16px !important;
+  color: #e0e0e0 !important;
+  line-height: 1 !important;
+}
+
+.settings-button:hover {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+  color: #fff !important;
+}
+
+.settings-button:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* Divider styles mejorados */
+mat-divider {
+  margin: 8px 0; /* Reducido de márgenes por defecto */
+  opacity: 0.3;
+}
+
+/* Scrollbar personalizado */
+.menu-container::-webkit-scrollbar {
+  width: 4px;
+}
+
+.menu-container::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.menu-container::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 2px;
+}
+
+.menu-container::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* Forzar estilos del botón Material */
+.sidebar-footer .mat-mdc-icon-button {
+  width: 28px !important;
+  height: 28px !important;
+  padding: 0 !important;
+  background: transparent !important;
+}
+
+.sidebar-footer .mat-mdc-button-base {
+  border-radius: 50% !important;
+}
+
+/* Estilos específicos para el ícono de Material */
+.sidebar-footer .material-icons,
+.sidebar-footer .mat-icon {
+  font-size: 16px !important;
+  width: 16px !important;
+  height: 16px !important;
+}

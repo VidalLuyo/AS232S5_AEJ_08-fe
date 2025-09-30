@@ -1,0 +1,222 @@
+.dashboard-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  padding: 16px;
+  overflow-y: auto;
+  max-height: calc(100vh - 120px);
+}
+
+.dashboard-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+  border-radius: 12px;
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 500;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+}
+
+/* Tamaños personalizados para cada tarjeta */
+.dashboard-card.dashboard {
+  grid-column: span 2; /* Ocupa 2 columnas */
+  grid-row: span 1; /* Ocupa 1 fila */
+  min-height: 150px;
+}
+
+.dashboard-card.ventas {
+  grid-column: span 1; /* Ocupa 1 columna */
+  grid-row: span 2; /* Ocupa 2 filas */
+  min-height: 250px;
+}
+
+.dashboard-card.compras {
+  grid-column: span 1; /* Ocupa 1 columna */
+  grid-row: span 1; /* Ocupa 1 fila */
+  min-height: 150px;
+}
+
+.dashboard-card.clientes {
+  grid-column: span 2; /* Ocupa 2 columnas */
+  grid-row: span 1; /* Ocupa 1 fila */
+  min-height: 150px;
+}
+
+.dashboard-card.proveedores {
+  grid-column: span 1; /* Ocupa 1 columna */
+  grid-row: span 2; /* Ocupa 2 filas */
+  min-height: 250px;
+}
+
+.dashboard-card.analisis {
+  grid-column: span 1; /* Ocupa 1 columna */
+  grid-row: span 1; /* Ocupa 1 fila */
+  min-height: 150px;
+}
+
+.dashboard-card.productos {
+  grid-column: span 2; /* Ocupa 2 columnas */
+  grid-row: span 1; /* Ocupa 1 fila */
+  min-height: 150px;
+}
+
+.dashboard-card.kardex {
+  grid-column: span 1; /* Ocupa 1 columna */
+  grid-row: span 1; /* Ocupa 1 fila */
+  min-height: 150px;
+}
+
+.dashboard-card.configuracion {
+  grid-column: span 2; /* Ocupa 2 columnas */
+  grid-row: span 1; /* Ocupa 1 fila */
+  min-height: 150px;
+}
+
+/* Iconos de fondo */
+.dashboard-card::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'Material Icons';
+  font-size: 100px;
+  color: rgba(255, 255, 255, 0.1);
+  z-index: 0;
+}
+
+/* Iconos específicos para cada tarjeta */
+.dashboard.dashboard-card::before {
+  content: 'dashboard';
+}
+
+.ventas.dashboard-card::before {
+  content: 'shopping_cart';
+}
+
+.compras.dashboard-card::before {
+  content: 'shopping_bag';
+}
+
+.clientes.dashboard-card::before {
+  content: 'groups';
+}
+
+.proveedores.dashboard-card::before {
+  content: 'local_shipping';
+}
+
+.analisis.dashboard-card::before {
+  content: 'analytics';
+}
+
+.productos.dashboard-card::before {
+  content: 'inventory';
+}
+
+.kardex.dashboard-card::before {
+  content: 'folder';
+}
+
+.configuracion.dashboard-card::before {
+  content: 'settings';
+}
+
+.dashboard-card mat-icon {
+  font-size: 48px;
+  width: 48px;
+  height: 48px;
+  margin-bottom: 12px;
+  color: white;
+  z-index: 1;
+}
+
+.dashboard-card span {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.8);
+  margin-top: 8px;
+  z-index: 1;
+}
+
+.dashboard-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+}
+
+.dashboard-card .action-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  background-color: rgba(255, 255, 255, 0.9);
+  color: #333;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  z-index: 1;
+}
+
+.dashboard-card:hover .action-button {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+/* Colores de las tarjetas */
+.dashboard { background: linear-gradient(135deg, #0D47A1, #1976D2); }
+.ventas { background: linear-gradient(135deg, #1976D2, #2196F3); }
+.compras { background: linear-gradient(135deg, #C2185B, #E91E63); }
+.clientes { background: linear-gradient(135deg, #388E3C, #4CAF50); }
+.proveedores { background: linear-gradient(135deg, #F57C00, #FF9800); }
+.analisis { background: linear-gradient(135deg, #0288D1, #03A9F4); }
+.empleado { background: linear-gradient(135deg, #009688, #4DB6AC); }
+.ingresos { background: linear-gradient(135deg, #43A047, #66BB6A); }
+.egresos { background: linear-gradient(135deg, #D32F2F, #E57373); }
+.productos { background: linear-gradient(135deg, #7B1FA2, #9C27B0); }
+.kardex { background: linear-gradient(135deg, #455A64, #607D8B); }
+.configuracion { background: linear-gradient(135deg, #5D4037, #795548); }
+
+/* Responsividad */
+@media (max-width: 768px) {
+  .dashboard-container {
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 12px;
+      padding: 12px;
+  }
+
+  .dashboard-card {
+      grid-column: span 1 !important; /* En móviles, todas las tarjetas ocupan 1 columna */
+      grid-row: span 1 !important; /* En móviles, todas las tarjetas ocupan 1 fila */
+      min-height: 120px;
+  }
+
+  .dashboard-card mat-icon {
+      font-size: 40px;
+      width: 40px;
+      height: 40px;
+      margin-bottom: 8px;
+  }
+
+  .dashboard-card span {
+      font-size: 0.8rem;
+  }
+
+  .dashboard-card .action-button {
+      padding: 6px 12px;
+      font-size: 0.8rem;
+  }
+}

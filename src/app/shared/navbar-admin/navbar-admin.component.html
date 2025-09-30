@@ -1,0 +1,19 @@
+<nav class="navbar floating-navbar">
+  <div class="navbar-left">
+    <h1 class="navbar-title">{{ currentPageTitle }}</h1>
+  </div>
+  <div class="navbar-right">
+
+    <!-- Notificación con badge redondo bien alineado -->
+    <button mat-icon-button class="notification-button" [matBadge]="3" matBadgeColor="warn" matBadgeOverlap="false">
+      <mat-icon>notifications</mat-icon>
+    </button>
+
+
+    <!-- Avatar redondo más profesional -->
+    <button mat-icon-button class="user-button">
+      <img src="assets/img/logo.png" alt="User Avatar" class="user-avatar">
+    </button>
+
+  </div>
+</nav>

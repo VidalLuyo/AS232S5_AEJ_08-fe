@@ -1,0 +1,129 @@
+:host {
+  display: block;
+  padding: 16px 16px 0 16px;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px; /* Tamaño del navbar */
+  background: linear-gradient(180deg, #1a2035 0%, #24344d 100%);
+  color: #e0e0e0;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  padding: 0 24px;
+  position: relative;
+  transition: padding-left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Ajuste del navbar cuando el sidebar está colapsado */
+:host-context(.sidebar-collapsed) .navbar {
+  padding-left: 50px; /* Se ajusta el padding en lugar de mover el margen */
+}
+
+.navbar-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.navbar-title {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  padding-right: 16px;
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.user-name {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #e0e0e0;
+}
+
+/* Mejora visual del botón de notificación */
+.notification-button {
+  background: transparent;
+  border: none;
+  color: #e0e0e0;
+  padding: 0;
+  margin: 0;
+  margin-right: 15px;
+}
+
+.notification-button .mat-icon {
+  font-size: 24px;
+}
+
+
+/* Badge bien posicionado y redondo */
+.notification-button .mat-badge-content {
+  top: 6px !important;
+  right: 6px !important;
+  font-size: 0.7rem;
+  height: 18px;
+  width: 18px;
+  line-height: 18px;
+  padding: 0;
+  border-radius: 50%;
+}
+
+/* Avatar más definido */
+.user-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 0 4px rgba(255, 255, 255, 0.2);
+}
+
+/* Botón de usuario sin borde */
+.user-button {
+  padding: 0;
+  border: none;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+/* Responsividad para el navbar */
+@media (max-width: 768px) {
+  .navbar {
+    height: 56px; /* Altura reducida en móviles */
+    padding: 0 16px; /* Padding reducido en móviles */
+  }
+
+  .navbar-title {
+    font-size: 1rem; /* Tamaño de fuente más pequeño */
+  }
+
+  .navbar-right {
+    gap: 12px; /* Espaciado reducido entre elementos */
+  }
+
+  .user-avatar {
+    width: 28px; /* Avatar más pequeño */
+    height: 28px;
+  }
+
+  .user-button {
+    min-width: 36px; /* Botón más pequeño */
+    height: 36px;
+    line-height: 36px;
+  }
+}

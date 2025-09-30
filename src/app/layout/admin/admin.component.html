@@ -1,0 +1,16 @@
+<div class="main-container" [class.sidebar-collapsed]="!isSidebarExpanded">
+  <!-- Sidebar -->
+  <app-sidebar-admin (toggleExpand)="onSidebarToggle($event)"></app-sidebar-admin>
+
+  <!-- Content Layout -->
+  <div class="content-layout">
+    <!-- Navbar -->
+    <app-navbar-admin [isSidebarExpanded]="isSidebarExpanded"></app-navbar-admin>
+
+    <!-- Home Container -->
+    <div class="home-container">
+      <!-- Aquí va lo que se renderiza según ruta hija -->
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

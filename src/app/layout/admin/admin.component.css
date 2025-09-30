@@ -1,0 +1,57 @@
+.main-container {
+  display: flex;
+  height: 100vh;
+}
+
+app-sidebar-admin {
+  position: fixed; /* Sidebar fijo */
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 260px; /* Ancho del sidebar expandido */
+  z-index: 1000; /* Asegurar que el sidebar esté por encima del contenido */
+  transition: width 0.3s ease-in-out;
+}
+
+.sidebar-collapsed app-sidebar-admin {
+  width: 65px; /* Ancho del sidebar colapsado */
+}
+
+.content-layout {
+  flex-grow: 1; /* Permite que el contenido crezca */
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  margin-left: 260px; /* Espacio para el sidebar expandido */
+  transition: margin-left 0.3s ease-in-out;
+}
+
+.sidebar-collapsed .content-layout {
+  margin-left: 65px; /* Espacio para el sidebar colapsado */
+}
+
+.home-container {
+  flex: 1;
+  padding: 20px;
+  background: linear-gradient(180deg, #0a1929 0%, #1a2035 100%);
+  color: #ffffff;
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+  app-sidebar-admin {
+    width: 65px; /* Sidebar colapsado por defecto en móviles */
+  }
+
+  .sidebar-collapsed app-sidebar-admin {
+    width: 65px; /* Sidebar colapsado en móviles */
+  }
+
+  .content-layout {
+    margin-left: 65px; /* Espacio para el sidebar colapsado en móviles */
+  }
+
+  .sidebar-collapsed .content-layout {
+    margin-left: 65px; /* Espacio para el sidebar colapsado en móviles */
+  }
+}

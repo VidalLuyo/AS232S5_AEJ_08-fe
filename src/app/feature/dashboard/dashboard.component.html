@@ -1,0 +1,85 @@
+<div class="dashboard-container">
+  <mat-card class="dashboard-card dashboard" data-section="Dashboard">
+    <mat-icon>dashboard</mat-icon>
+    <p>Dashboard</p>
+    <span>Resumen general del sistema</span>
+    <a class="action-button" routerLink="/admin">Ir a Dashboard</a>
+  </mat-card>
+
+  <mat-card class="dashboard-card ventas" data-section="Ventas">
+    <mat-icon>shopping_cart</mat-icon>
+    <p>Ventas</p>
+    <span>Gestión de ventas y reportes</span>
+    <a class="action-button">Ir a Ventas</a>
+  </mat-card>
+
+  <mat-card class="dashboard-card compras" data-section="Compras">
+    <mat-icon>shopping_bag</mat-icon>
+    <p>Compras</p>
+    <span>Gestión de compras y proveedores</span>
+    <a class="action-button">Ir a Compras</a>
+  </mat-card>
+
+  <mat-card class="dashboard-card clientes" data-section="Clientes">
+    <mat-icon>groups</mat-icon>
+    <p>Clientes</p>
+    <span>Gestión de clientes y fidelización</span>
+    <a class="action-button" [routerLink]="['/admin', 'client-form']">Ir a Clientes</a>
+  </mat-card>
+
+  <mat-card class="dashboard-card proveedores" data-section="Proveedores">
+    <mat-icon>local_shipping</mat-icon>
+    <p>Proveedores</p>
+    <span>Gestión de proveedores y contratos</span>
+    <a class="action-button">Ir a Proveedores</a>
+  </mat-card>
+
+  <mat-card class="dashboard-card analisis" data-section="Análisis">
+    <mat-icon>analytics</mat-icon>
+    <p>Análisis</p>
+    <span>Reportes y análisis de datos</span>
+    <a class="action-button">Ir a Análisis</a>
+  </mat-card>
+
+  <mat-card class="dashboard-card productos" data-section="Productos">
+    <mat-icon>inventory</mat-icon>
+    <p>Productos</p>
+    <span>Gestión de inventario y stock</span>
+    <a class="action-button">Ir a Productos</a>
+  </mat-card>
+
+  <mat-card class="dashboard-card kardex" data-section="Kardex">
+    <mat-icon>folder</mat-icon>
+    <p>Kardex</p>
+    <span>Historial de movimientos</span>
+    <a class="action-button">Ir a Kardex</a>
+  </mat-card>
+
+  <mat-card class="dashboard-card empleado" data-section="Empleado">
+    <mat-icon>person_add</mat-icon>
+    <p>Empleado</p>
+    <span>Gestión de empleados y roles</span>
+    <a class="action-button">Ir a Empleados</a>
+  </mat-card>
+
+  <mat-card class="dashboard-card ingresos" data-section="Ingresos">
+    <mat-icon>attach_money</mat-icon>
+    <p>Ingresos</p>
+    <span>Control y registro de ingresos</span>
+    <a class="action-button">Ir a Ingresos</a>
+  </mat-card>
+
+  <mat-card class="dashboard-card egresos" data-section="Egresos">
+    <mat-icon>money_off</mat-icon>
+    <p>Egresos</p>
+    <span>Control y registro de egresos</span>
+    <a class="action-button">Ir a Egresos</a>
+  </mat-card>
+
+  <mat-card class="dashboard-card configuracion" data-section="Configuración">
+    <mat-icon>settings</mat-icon>
+    <p>Configuración</p>
+    <span>Ajustes del sistema</span>
+    <a class="action-button">Ir a Configuración</a>
+  </mat-card>
+</div>

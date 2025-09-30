@@ -1,0 +1,96 @@
+<div
+  class="sidebar-overlay"
+  *ngIf="isExpanded && isMobile()"
+  (click)="toggleSidebar()"
+></div>
+
+<div class="sidebar-container" [class.expanded]="isExpanded">
+  <!-- Header -->
+  <div class="sidebar-header">
+    <div class="logo-container">
+      <img
+        src="assets/img/logo.png"
+        alt="Logo"
+        class="logo"
+        *ngIf="isExpanded"
+      />
+      <span class="logo-text" *ngIf="isExpanded"
+        >Puesto de Frutas - DON VICO</span
+      >
+    </div>
+    <button
+      mat-icon-button
+      class="toggle-button"
+      (click)="toggleSidebar()"
+      [matTooltip]="isExpanded ? 'Collapse' : 'Expand'"
+    >
+      <mat-icon>{{ isExpanded ? "chevron_left" : "menu" }}</mat-icon>
+    </button>
+  </div>
+
+  <!-- Navigation Menu -->
+  <div class="menu-container">
+    <ng-container *ngFor="let group of menuItems">
+      <!-- Solo mostrar el grupo si tiene items visibles -->
+      <div class="menu-group" *ngIf="hasVisibleItems(group)">
+        <div class="group-label" *ngIf="isExpanded">{{ group.group }}</div>
+        <div class="menu-items">
+          <a
+            *ngFor="let item of getVisibleItems(group)"
+            class="menu-item"
+            [routerLink]="item.route"
+            routerLinkActive="active"
+            [matTooltip]="!isExpanded ? item.label : ''"
+            [matTooltipPosition]="'right'"
+          >
+            <div class="item-content">
+              <mat-icon>{{ item.icon }}</mat-icon>
+              <span class="item-label" *ngIf="isExpanded">{{
+                item.label
+              }}</span>
+            </div>
+            <div class="hover-indicator"></div>
+          </a>
+        </div>
+      </div>
+      <!-- Solo mostrar divider si el grupo es visible -->
+      <mat-divider *ngIf="isExpanded && hasVisibleItems(group)"></mat-divider>
+    </ng-container>
+  </div>
+
+  <!-- Footer -->
+  <div class="sidebar-footer">
+    <div class="user-profile" [class.collapsed]="!isExpanded">
+      <div class="avatar-container">
+        <img src="assets/img/logo.png" alt="User Avatar" class="avatar" />
+        <div class="status-indicator"></div>
+      </div>
+      <div class="user-info" *ngIf="isExpanded">
+        <span class="user-name">{{ usuarioNombre }}</span>
+        <span class="user-role">{{ userRole === 'ADMIN' ? 'Administrador' : userRole === 'EMPLEADO' ? 'Empleado' : 'Desconocido' }}</span>
+      </div>
+    </div>
+
+    <!-- Botón de configuración con menú -->
+    <button
+      mat-icon-button
+      *ngIf="isExpanded"
+      class="settings-button"
+      [matMenuTriggerFor]="userMenu"
+    >
+      <mat-icon>settings</mat-icon>
+    </button>
+
+    <!-- Menú con logout -->
+    <mat-menu #userMenu="matMenu" xPosition="before">
+      <button mat-menu-item (click)="logout()">
+        <mat-icon>logout</mat-icon>
+        <span>Cerrar Sesión</span>
+      </button>
+    </mat-menu>
+  </div>
+</div>
+
+<div class="content" [class.expanded]="isExpanded">
+  <ng-content></ng-content>
+</div>
